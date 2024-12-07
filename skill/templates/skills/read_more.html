@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Read More
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Learn More About Our Courses</h1>
+    <p>Our platform offers a variety of courses tailored to your learning needs, including:</p>
+    <ul>
+        <li>Web Development</li>
+        <li>Computer Science Basics</li>
+        <li>Advanced Python Programming</li>
+        <li>Project-Based Learning</li>
+        <li>Online Marketing</li>
+    </ul>
+    <p>Each course is designed to equip you with practical skills and hands-on experience, enabling you to thrive in the tech world. Start learning at your own pace and achieve your goals.</p>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'join_now' %}" class="btn btn-success btn-lg">Join Now</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Welcome to ReSKILL {% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs & Help</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="/terms-and-conditions/">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>FAQs & Help</h1>
+
+        <section>
+            <h2>General Questions</h2>
+            <ul>
+                <li><strong>What is ReSKILL?</strong><br> ReSKILL is an online learning platform offering courses in various fields of study.</li>
+                <li><strong>How do I sign up for an account?</strong><br> Click on the 'Sign Up' button and follow the instructions to create a new account.</li>
+                <li><strong>How do I reset my password?</strong><br> Use the 'Forgot Password' option on the login page to receive a reset link.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Courses and Learning</h2>
+            <ul>
+                <li><strong>How do I enroll in a course?</strong><br> Go to the course page and click 'Enroll Now'.</li>
+                <li><strong>Can I preview a course before enrolling?</strong><br> Yes, you can preview the syllabus and some sample lessons.</li>
+                <li><strong>What happens if I don’t complete a course?</strong><br> You can continue the course at any time, but certificates are only awarded once all requirements are met.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Payments and Subscriptions</h2>
+            <ul>
+                <li><strong>What payment methods are accepted?</strong><br> We accept credit cards, PayPal, and other secure payment methods.</li>
+                <li><strong>Can I get a refund if I’m not satisfied?</strong><br> Yes, refunds are available under our refund policy within a set timeframe.</li>
+                <li><strong>How does the subscription plan work?</strong><br> Subscriptions are charged monthly/annually, and you can cancel at any time.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Technical Issues</h2>
+            <ul>
+                <li><strong>The platform isn’t loading; what should I do?</strong><br> Try refreshing the page or check your internet connection. If the issue persists, contact support.</li>
+                <li><strong>How do I update my profile or change my email address?</strong><br> Go to your profile settings and make the necessary changes.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Contact Support</h2>
+            <p>If you need further assistance, please <a href="mailto:support@reskill.com">contact us</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+{% endblock %}

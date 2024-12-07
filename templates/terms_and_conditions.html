@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Welcome to ReSKILL {% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="/help/">Help</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Terms and Conditions</h1>
+
+        <section>
+            <h2>Introduction</h2>
+            <p>These terms govern your use of our platform. By accessing or using our platform, you agree to these terms.</p>
+        </section>
+
+        <section>
+            <h2>User Accounts</h2>
+            <p>To use our platform, you must create an account with accurate information. You are responsible for maintaining the security of your account.</p>
+        </section>
+
+        <section>
+            <h2>Platform Usage</h2>
+            <p>You agree to use the platform for lawful purposes only and follow the rules outlined in this agreement.</p>
+        </section>
+
+        <section>
+            <h2>Payments and Subscriptions</h2>
+            <p>Our platform operates on a subscription model. Payment methods and refund policies are described in our pricing section.</p>
+        </section>
+
+        <section>
+            <h2>Intellectual Property</h2>
+            <p>All content provided on the platform, including course materials, is owned by us. You are not allowed to copy, distribute, or modify this content without permission.</p>
+        </section>
+
+        <section>
+            <h2>Termination</h2>
+            <p>We may suspend or terminate your account if you violate these terms.</p>
+        </section>
+
+        <section>
+            <h2>Liability and Disclaimers</h2>
+            <p>We are not responsible for any direct or indirect damages resulting from the use of our platform.</p>
+        </section>
+
+        <section>
+            <h2>Changes to Terms</h2>
+            <p>We may update these terms periodically. All changes will be posted on this page.</p>
+        </section>
+
+        <section>
+            <h2>Contact Information</h2>
+            <p>If you have any questions regarding these terms, please contact us at <a href="mailto:support@reskill.com">support@reskill.com</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+{% endblock %}

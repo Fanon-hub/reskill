@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Welcome to ReSKILL {% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/terms-and-conditions/">Terms and Conditions</a></li>
+                <li><a href="/help/">Help</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Privacy Policy</h1>
+
+        <section>
+            <h2>Introduction</h2>
+            <p>Your privacy is important to us. This policy explains how we collect, use, and protect your personal information when you use our platform.</p>
+        </section>
+
+        <section>
+            <h2>Information We Collect</h2>
+            <ul>
+                <li><strong>Personal Information:</strong> Name, email, payment details.</li>
+                <li><strong>Usage Data:</strong> Course progress, device information, IP address.</li>
+                <li><strong>Cookies and Tracking Technologies:</strong> Data from cookies, analytics tools.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>How We Use Your Information</h2>
+            <ul>
+                <li>Account creation and maintenance.</li>
+                <li>Course recommendations and progress tracking.</li>
+                <li>Communication (e.g., updates, notifications).</li>
+                <li>Marketing (with user consent).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Data Security</h2>
+            <p>We use industry-standard security measures to protect your data, including encryption and secure servers.</p>
+        </section>
+
+        <section>
+            <h2>Changes to This Policy</h2>
+            <p>We may update this privacy policy periodically. All changes will be posted on this page, with the updated date.</p>
+        </section>
+
+        <section>
+            <h2>Contact Information</h2>
+            <p>If you have any questions about this privacy policy, please contact us at <a href="mailto:support@reskill.com">support@reskill.com</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+{% endblock %}

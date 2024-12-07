@@ -1,0 +1,48 @@
+{% extends 'c_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Courses | ReSKILL</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'explore' %}">Explore Courses</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="courses">
+            <h1>Explore Our Courses</h1>
+            <p>Discover the right course for you and take the next step in your learning journey.</p>
+
+            <div class="course-list">
+                {% for course in courses %}
+                <div class="course-card">
+                    <h2>{{ course.title }}</h2>
+                    <p>{{ course.description|truncatewords:20 }}</p>
+                    <a href="{% url 'course_detail' course.slug %}" class="btn">Learn More</a>
+                </div>
+                {% empty %}
+                <p>No courses are currently available. Please check back later.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+
+</body>
+</html>
