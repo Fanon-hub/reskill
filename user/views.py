@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+
+from skill.models import Course, UserProfile
 from .forms import UserRegisterForm, UserLoginForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 
@@ -48,3 +50,9 @@ def logout_view(request):
     logout(request)
     messages.success(request, "You have been logged out successfully!")
     return redirect('login')
+
+def dashboard_view(request):
+    user=UserProfile.objects.all()
+    courses=Course.objects.all()
+    return render(request, 'admin_dashboard.html', {'user': user, 'courses': courses})
+

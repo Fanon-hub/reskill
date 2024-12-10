@@ -1,25 +1,17 @@
-from urllib import request
-
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Course
-from .forms import CourseForm
+from .models import Course,Student, Lesson, Participant, StudentEnrollment, UserProfile
+from .forms import CourseForm, SignUpForm
 
 
 #Home page view
 def home(request):
-    return render(request, 'skills/index.html', {'title': 'Home'})
+    courses = Course.objects.all()
+    return render(request, 'skills/index.html', {'title': 'Home', 'courses': courses})
 
-# Courses listing view
 def courses(request):
-    # Mock data for demonstration purposes
-    courses_list = [
-        {'id': 1, 'name': 'Introduction to Python', 'description': 'Learn the basics of Python programming.'},
-        {'id': 2, 'name': 'Web Development with Django', 'description': 'Build web applications using Django.'},
-        {'id': 3, 'name': 'Frontend Development', 'description': 'Master HTML, CSS, and JavaScript.'},
-    ]
-    return render(request, 'skills/courses.html', {'title': 'Courses', 'courses': courses_list})
-
+    all_courses = Course.objects.all()  # Retrieve all courses
+    return render(request, 'skills/courses.html', {'courses': all_courses})
 def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -30,75 +22,68 @@ def contact(request):
 
 # Course detail view
 def course_detail(request, course_id):
-    # Mock data for demonstration purposes
-    courses_detail = {
-        1: {'name': 'Machine Learning', 'description': 'Machine Learning and Deep Learning'},
-        2: {'name': 'Introduction to Python', 'description': 'Learn the basics of Python programming.'},
-        3: {'name': 'Digital Marketing', 'description': 'Digital Marketing'},
-        4: {'name': 'Web Development ', 'description': 'Build web applications using Django.'},
-        5: {'name': 'Graphics Design', 'description': 'Master art in creating dynamic designs on various websites.'},
+    # Retrieve the course by ID
+    course = get_object_or_404(Course, id=course_id)
 
-    }
-    course = courses_detail.get(course_id, None)
-    if not course:
-        return HttpResponse('Course not found', status=404)
-    return render(request, 'skills/course_detail.html', {'title': course['name'], 'course': course})
+    # Pass course and its participants to the template
+    participants = course.participants.all()  # Assuming a related name "participants"
+    return render(request, 'skills/course_detail.html', {
+        'course': course,
+        'participants': participants
+    })
+
+
+def sign_up_view(request, course_id):
+    course = Course.objects.get(id=course_id)
+
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            # Call the save method to create and save the Participant
+            form.save(course=course, user=request.user)
+            return redirect('course_detail', course_id=course.id)  # Redirect to course detail page
+    else:
+        form = SignUpForm()
+
+    return render(request, 'skills/sign_up.html', {'form': form, 'course': course})
+
 
 # About page view
 def about(request):
     return render(request, 'skills/about.html', {'title': 'About'})
 
-def course(request):
-    courses_list = Course.objects.all()
-    return render(request, 'skills/courses.html', {'title': 'Courses', 'courses': courses_list})
+# def course(request, course_id):
+#     course = get_object_or_404(Course, id=course_id)
+#     return render(request, 'skills/courses.html', {'title': 'Courses', 'course': course})
+
+def course(request, course_id):
+    course = get_object_or_404(Course, id=course_id)  # Get course by ID or return 404
+    return render(request, 'skills/course_detail.html', {'course': course})
+
+def course_view(request, course_id):
+    course = Course.objects.all()  # Get course by ID or return 404
+    return render(request, 'skills/course_detail.html', {'course': course})
 
 def read_more(request):
     return render(request, 'skills/read_more.html')
 def join_now(request):
     return render(request, 'skills/join_now.html')
 
-# Create
-def create_course(request):
-    if request.method == 'POST':
-        form = CourseForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('course_list')
-    else:
-        form = CourseForm()
-    return render(request, 'programmes/create_course.html', {'form': form})
-
-# Read
-def course_list(request):
-    courses = Course.objects.all()
-    return render(request, 'programmes/course_list.html', {'courses': courses})
-
-def course_info(request, pk):
-    course = get_object_or_404(Course, pk=pk)
-    return render(request, 'programmes/course_info.html', {'course': course})
-
-# Update
-def update_course(request, pk):
-    course = get_object_or_404(Course, pk=pk)
-    if request.method == 'POST':
-        form = CourseForm(request.POST, instance=course)
-        if form.is_valid():
-            form.save()
-            return redirect('course_list')
-    else:
-        form = CourseForm(instance=course)
-    return render(request, 'programmes/update_course.html', {'form': form})
-
-# Delete
-def delete_course(request, pk):
-    course = get_object_or_404(Course, pk=pk)
-    if request.method == 'POST':
-        course.delete()
-        return redirect('course_list')
-    return render(request, 'programmes/delete_course.html', {'course': course})
 def privacy_policy(request):
     return render(request, 'privacy_policy.html')
 def terms_and_conditions(request):
     return render(request, 'terms_and_conditions.html')
 def faqs_and_help(request):
     return render(request, 'faqs_and_help.html')
+
+def explore(request):
+    courses = Course.objects.all()  # Retrieve all courses (or filter as needed)
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'skills/explore.html', context)
+
+def explored(request, course_id):
+    courses = get_object_or_404(Course, id=course_id)
+    return render(request, 'skills/explore.html', {'course': courses})
+

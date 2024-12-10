@@ -79,70 +79,71 @@
     <div class="container mt-5">
         <h2 class="text-center">Popular Course Categories</h2>
         <div class="row">
-            <!-- Machine Learning -->
+             <!-- Machine Learning -->
+            {% for course in courses %}
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="{% static 'img/class.png' %}" class="card-img-top" alt="Machine Learning">
+                    <img src="{{ course.course_image.url }}" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Machine Learning</h5>
-                        <p class="card-text">Learn how to make machines smart and intelligent with data-driven techniques.</p>
+                        <h5 class="card-title">{{ course.name }}</h5>
+                        <p class="card-text">{{ course.short_description }}</p>
                         <a href="{% url 'courses' %}" class="btn btn-primary">Explore</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Web Development -->
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="{% static 'img/course 2.png' %}" class="card-img-top" alt="Web Development">
-                    <div class="card-body">
-                        <h5 class="card-title">Web Development</h5>
-                        <p class="card-text">Create beautiful and functional websites with the latest technologies.</p>
-                        <a href="{% url 'courses' %}" class="btn btn-primary">Explore</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Digital Marketing -->
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="{% static 'img/market 1.jpg' %}" class="card-img-top" alt="Online Marketing">
-                    <div class="card-body">
-                        <h5 class="card-title">Digital Marketing</h5>
-                        <p class="card-text">Master the art of digital marketing to boost your business online.</p>
-                        <a href="{% url 'courses' %}" class="btn btn-primary">Explore</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Graphics Design -->
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="{% static 'img/course 1.png' %}" class="card-img-top" alt="Graphics Design">
-                    <div class="card-body">
-                        <h5 class="card-title">Graphics Design</h5>
-                        <p class="card-text">Learn the principles of design and create stunning visual content.</p>
-                        <a href="{% url 'courses' %}" class="btn btn-primary">Explore</a>
-                    </div>
-                </div>
-            </div>
-
-          <!--programming-->
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="{% static 'img/python 2.jpg' %}" class="card-img-top" alt="Python Programming">
-                    <div class="card-body">
-                        <h5 class="card-title">Python Programming</h5>
-                        <p class="card-text">Learn the principles and different fundamentals of Python Programming </p>
-                        <a href="{% url 'courses' %}" class="btn btn-primary">Explore</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Categories End -->
+            {% endfor %}
+{#            <!-- Web Development -->#}
+{#            <div class="col-md-3 mb-4">#}
+{#                <div class="card">#}
+{#                    <img src="{% static 'img/course 2.png' %}" class="card-img-top" alt="Web Development">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">Web Development</h5>#}
+{#                        <p class="card-text">Create beautiful and functional websites with the latest technologies.</p>#}
+{#                        <a href="{% url 'courses' %}" class="btn btn-primary">Explore</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <!-- Digital Marketing -->#}
+{#            <div class="col-md-3 mb-4">#}
+{#                <div class="card">#}
+{#                    <img src="{% static 'img/market 1.jpg' %}" class="card-img-top" alt="Online Marketing">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">Digital Marketing</h5>#}
+{#                        <p class="card-text">Master the art of digital marketing to boost your business online.</p>#}
+{#                        <a href="{% url 'courses' %}" class="btn btn-primary">Explore</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <!-- Graphics Design -->#}
+{#            <div class="col-md-3 mb-4">#}
+{#                <div class="card">#}
+{#                    <img src="{% static 'img/course 1.png' %}" class="card-img-top" alt="Graphics Design">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">Graphics Design</h5>#}
+{#                        <p class="card-text">Learn the principles of design and create stunning visual content.</p>#}
+{#                        <a href="{% url 'courses' %}" class="btn btn-primary">Explore</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#          <!--programming-->#}
+{#            <div class="col-md-3 mb-4">#}
+{#                <div class="card">#}
+{#                    <img src="{% static 'img/python 2.jpg' %}" class="card-img-top" alt="Python Programming">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">Python Programming</h5>#}
+{#                        <p class="card-text">Learn the principles and different fundamentals of Python Programming </p>#}
+{#                        <a href="{% url 'courses' %}" class="btn btn-primary">Explore</a>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <!-- Categories End -->#}
 
 
     <!-- Courses Start -->
@@ -156,14 +157,14 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/web 1.jpg' %}" alt="">
+                            <img class="img-fluid" src="{% static 'img/web 1.jpg' %}" alt="" style="height:15rem;width:20rem">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                 <a href="{% url 'read_more' %}" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
                                 <a href="{% url 'join_now' %}" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
                             </div>
                         </div>
                         <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">KSh.30,000</h3>
+{#                            <h3 class="mb-0">KSh.30,000</h3>#}
                             <div class="mb-3">
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
@@ -184,14 +185,14 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/python 2.jpg' %}" alt="">
+                            <img class="img-fluid" src="{% static 'img/python 2.jpg' %}" alt="" style="height:15rem;width:20rem">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                 <a href="{% url 'read_more' %}" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
                                 <a href="{% url 'join_now' %}" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
                             </div>
                         </div>
                         <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">KSh.25,000</h3>
+{#                            <h3 class="mb-0">KSh.25,000</h3>#}
                             <div class="mb-3">
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
@@ -212,14 +213,14 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/market 1.jpg' %}" alt="">
+                            <img class="img-fluid" src="{% static 'img/market 1.jpg' %}" alt="" style="height:15rem;width:20rem">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                                 <a href="{% url 'read_more' %}" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
                                 <a href="{% url 'join_now' %}" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
                             </div>
                         </div>
                         <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">KSh.28,000</h3>
+{#                            <h3 class="mb-0">KSh.28,000</h3>#}
                             <div class="mb-3">
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>

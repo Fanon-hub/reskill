@@ -1,17 +1,37 @@
+{#{% extends 'c_base.html' %}#}
+{#{% block content %}#}
+{##}
+{#<h1>Courses</h1>#}
+{# {%  for course in courses %}#}
+{#<ul class="list-group">#}
+{#    {% for course in courses %}#}
+{#    <li class="list-group-item">#}
+{#        <h5>{{ course.name }}</h5>#}
+{#        <p><pre>{{ course.description }}</pre></p>#}
+{#        <p><strong>Level:</strong> {{ course.level }}</p>#}
+{#        <a class="btn btn-sm btn-secondary" href="{% url 'sign_up' course_id=course.id %}">Register for this course</a>#}
+{#    </li>#}
+{#    {% endfor %}#}
+{#{% endfor %}#}
+{#</ul>#}
+{#{% endblock %}#}
+
+
 {% extends 'c_base.html' %}
 {% block content %}
 
 <h1>Courses</h1>
- {%  for course in courses %}
+
 <ul class="list-group">
     {% for course in courses %}
     <li class="list-group-item">
         <h5>{{ course.name }}</h5>
-        <p><pre>{{ course.description|truncatechars:50 }}</pre></p>
+        <p>{{ course.description|truncatechars:200 }}</p>
         <p><strong>Level:</strong> {{ course.level }}</p>
-        <a class="btn btn-sm btn-secondary" href="{% url 'course_detail' course.id %}">View Details</a>
+        <a class="btn btn-sm btn-secondary" href="{% url 'sign_up' course_id=course.id %}">Register for this course</a>
     </li>
     {% endfor %}
-{% endfor %}
 </ul>
+
 {% endblock %}
+

@@ -1,48 +1,21 @@
-{% extends 'c_base.html' %}
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Courses | ReSKILL</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'explore' %}">Explore Courses</a></li>
-                <li><a href="{% url 'about' %}">About Us</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
+{% extends 'base.html' %}
 
-    <main>
-        <section class="courses">
-            <h1>Explore Our Courses</h1>
-            <p>Discover the right course for you and take the next step in your learning journey.</p>
-
-            <div class="course-list">
-                {% for course in courses %}
-                <div class="course-card">
-                    <h2>{{ course.title }}</h2>
-                    <p>{{ course.description|truncatewords:20 }}</p>
-                    <a href="{% url 'course_detail' course.slug %}" class="btn">Learn More</a>
+{% block content %}
+<div class="container my-5">
+    <h2>Explore Courses</h2>
+    <div class="row">
+        {% if courses %}
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ name }}</h5>
+                    <p class="card-text">{{ description }}</p>
+                    <a href="{% url 'course_detail' course.pk %}" class="btn btn-primary btn-sm">View Details</a>
                 </div>
-                {% empty %}
-                <p>No courses are currently available. Please check back later.</p>
-                {% endfor %}
             </div>
-        </section>
-    </main>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
 
-
-</body>
-</html>

@@ -1,7 +1,24 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-<h1>{{ course.name }}</h1>
-<p>{{ course.description }}</p>
-<a class="btn btn-primary" href="{% url 'courses' %}">Back to Courses</a>
+
+    <div>
+    <h1>{{ course.title }}</h1>
+    <p><strong>Description:</strong> <pre>{{ course.description }}</pre></p>
+    <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+    <p><strong>Start Date:</strong> {{ course.start_date }}</p>
+
+    <h2>Participants</h2>
+    <ul>
+        {% for participant in participants %}
+            <li>{{ participant.name }} - {{ participant.email }}</li>
+        {% empty %}
+            <li>No participants registered yet.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'course' course_id=course.id %}">Browse Courses</a>
+
+    </div>
 {% endblock %}
+
